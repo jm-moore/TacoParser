@@ -5,21 +5,21 @@ namespace LoggingKata.Test
 {
     public class TacoParserTests
     {
-        [Fact]
-        public void ShouldDoSomething()
-        {
-            // TODO: Complete Something, if anything
+      //  [Theory]
+      //  public void FarthestApart(Point distance, bool expected)
+      //  {
+      //  //TODO: Complete Something, if anything
 
-            //Arrange
-            var tacoParser = new TacoParser();
+      // //     Arrange
+      //      var tacoParser = new TacoParser();
 
-            //Act
-            var actual = tacoParser.Parse("34.073638, -84.677017, Taco Bell Acwort...");
+      // //     Act
+      //      var actual = tacoParser.Parse("34.073638, -84.677017, Taco Bell Acwort...");
 
-            //Assert
-            Assert.NotNull(actual);
+      ////      Assert
+      //      Assert.NotNull(actual);
 
-        }
+      //  }
 
         [Theory]
         [InlineData("34.073638, -84.677017, Taco Bell Acwort...", -84.677017)]
@@ -30,14 +30,27 @@ namespace LoggingKata.Test
             //       each representing a TacoBell location
 
             //Arrange
+            var tpInstance = new TacoParser();
 
             //Act
+            var actual = tpInstance.Parse(line).Location.Longitude;
 
             //Assert
+            Assert.Equal(expected, actual);
         }
 
+        
+            //TODO: Create a test ShouldParseLatitude
+        [Theory]
+        [InlineData("34.073638, -84.677017, Taco Bell Acwort...", -84.677017)]
+        public void ShouldParseLatitude(string line, double expected)
+        {
+            var tpInstance = new TacoParser();
 
-        //TODO: Create a test ShouldParseLatitude
+            var actual = tpInstance.Parse(line).Location.Latitude;
 
+            Assert.Equal(expected, actual);
+        }
     }
 }
+
